@@ -6,12 +6,19 @@
 //
 
 import SwiftUI
+import Firebase
+
 
 @main
 struct SpineProjectApp: App {
+    
+    init() {
+        FirebaseApp.configure()
+    }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+                .environmentObject(ViewModel())
         }
     }
 }

@@ -7,13 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		659B06E928A1AD830004583F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 659B06E828A1AD830004583F /* GoogleService-Info.plist */; };
+		659B06EA28A1AD830004583F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 659B06E828A1AD830004583F /* GoogleService-Info.plist */; };
+		659B06EB28A1AD830004583F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 659B06E828A1AD830004583F /* GoogleService-Info.plist */; };
 		65E2E49228A19E1C00BE6426 /* SpineProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2E49128A19E1C00BE6426 /* SpineProjectApp.swift */; };
-		65E2E49428A19E1C00BE6426 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2E49328A19E1C00BE6426 /* ContentView.swift */; };
+		65E2E49428A19E1C00BE6426 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2E49328A19E1C00BE6426 /* MainView.swift */; };
 		65E2E49628A19E1E00BE6426 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65E2E49528A19E1E00BE6426 /* Assets.xcassets */; };
 		65E2E49928A19E1E00BE6426 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65E2E49828A19E1E00BE6426 /* Preview Assets.xcassets */; };
 		65E2E4A328A19E1E00BE6426 /* SpineProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2E4A228A19E1E00BE6426 /* SpineProjectTests.swift */; };
 		65E2E4AD28A19E1E00BE6426 /* SpineProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2E4AC28A19E1E00BE6426 /* SpineProjectUITests.swift */; };
 		65E2E4AF28A19E1E00BE6426 /* SpineProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2E4AE28A19E1E00BE6426 /* SpineProjectUITestsLaunchTests.swift */; };
+		65E2E4BF28A19E8200BE6426 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2E4BE28A19E8200BE6426 /* ViewModel.swift */; };
+		65E2E4C128A19E9B00BE6426 /* SpineBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2E4C028A19E9B00BE6426 /* SpineBook.swift */; };
+		65E2E4C528A19FE200BE6426 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 65E2E4C428A19FE200BE6426 /* FirebaseAuth */; };
+		65E2E4C728A19FE200BE6426 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 65E2E4C628A19FE200BE6426 /* FirebaseFirestore */; };
+		65E2E4CA28A1A03100BE6426 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 65E2E4C928A1A03100BE6426 /* SDWebImageSwiftUI */; };
+		65E2E4CF28A1A09A00BE6426 /* balibilly-design-kage-demo-font-black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 65E2E4CE28A1A09A00BE6426 /* balibilly-design-kage-demo-font-black.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		659B06E828A1AD830004583F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65E2E48E28A19E1C00BE6426 /* SpineProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpineProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E2E49128A19E1C00BE6426 /* SpineProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpineProjectApp.swift; sourceTree = "<group>"; };
-		65E2E49328A19E1C00BE6426 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		65E2E49328A19E1C00BE6426 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		65E2E49528A19E1E00BE6426 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65E2E49828A19E1E00BE6426 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		65E2E49E28A19E1E00BE6426 /* SpineProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpineProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +54,10 @@
 		65E2E4A828A19E1E00BE6426 /* SpineProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpineProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E2E4AC28A19E1E00BE6426 /* SpineProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpineProjectUITests.swift; sourceTree = "<group>"; };
 		65E2E4AE28A19E1E00BE6426 /* SpineProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpineProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		65E2E4BE28A19E8200BE6426 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		65E2E4C028A19E9B00BE6426 /* SpineBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpineBook.swift; sourceTree = "<group>"; };
+		65E2E4CD28A1A06D00BE6426 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		65E2E4CE28A1A09A00BE6426 /* balibilly-design-kage-demo-font-black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "balibilly-design-kage-demo-font-black.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +65,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65E2E4CA28A1A03100BE6426 /* SDWebImageSwiftUI in Frameworks */,
+				65E2E4C528A19FE200BE6426 /* FirebaseAuth in Frameworks */,
+				65E2E4C728A19FE200BE6426 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,9 +111,14 @@
 		65E2E49028A19E1C00BE6426 /* SpineProject */ = {
 			isa = PBXGroup;
 			children = (
+				659B06E828A1AD830004583F /* GoogleService-Info.plist */,
+				65E2E4CD28A1A06D00BE6426 /* Info.plist */,
 				65E2E49128A19E1C00BE6426 /* SpineProjectApp.swift */,
-				65E2E49328A19E1C00BE6426 /* ContentView.swift */,
+				65E2E4BD28A19E5C00BE6426 /* Views */,
+				65E2E4BC28A19E5500BE6426 /* ViewModels */,
+				65E2E4BB28A19E4700BE6426 /* Models */,
 				65E2E49528A19E1E00BE6426 /* Assets.xcassets */,
+				65E2E4C228A19EA800BE6426 /* Fonts */,
 				65E2E49728A19E1E00BE6426 /* Preview Content */,
 			);
 			path = SpineProject;
@@ -127,6 +149,38 @@
 			path = SpineProjectUITests;
 			sourceTree = "<group>";
 		};
+		65E2E4BB28A19E4700BE6426 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				65E2E4C028A19E9B00BE6426 /* SpineBook.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		65E2E4BC28A19E5500BE6426 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				65E2E4BE28A19E8200BE6426 /* ViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		65E2E4BD28A19E5C00BE6426 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				65E2E49328A19E1C00BE6426 /* MainView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		65E2E4C228A19EA800BE6426 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				65E2E4CE28A1A09A00BE6426 /* balibilly-design-kage-demo-font-black.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +197,11 @@
 			dependencies = (
 			);
 			name = SpineProject;
+			packageProductDependencies = (
+				65E2E4C428A19FE200BE6426 /* FirebaseAuth */,
+				65E2E4C628A19FE200BE6426 /* FirebaseFirestore */,
+				65E2E4C928A1A03100BE6426 /* SDWebImageSwiftUI */,
+			);
 			productName = SpineProject;
 			productReference = 65E2E48E28A19E1C00BE6426 /* SpineProject.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +274,10 @@
 				Base,
 			);
 			mainGroup = 65E2E48528A19E1C00BE6426;
+			packageReferences = (
+				65E2E4C328A19FE200BE6426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				65E2E4C828A1A03100BE6426 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 65E2E48F28A19E1C00BE6426 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,7 +295,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				65E2E49928A19E1E00BE6426 /* Preview Assets.xcassets in Resources */,
+				659B06E928A1AD830004583F /* GoogleService-Info.plist in Resources */,
 				65E2E49628A19E1E00BE6426 /* Assets.xcassets in Resources */,
+				65E2E4CF28A1A09A00BE6426 /* balibilly-design-kage-demo-font-black.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +305,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				659B06EA28A1AD830004583F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +313,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				659B06EB28A1AD830004583F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +324,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65E2E49428A19E1C00BE6426 /* ContentView.swift in Sources */,
+				65E2E4C128A19E9B00BE6426 /* SpineBook.swift in Sources */,
+				65E2E49428A19E1C00BE6426 /* MainView.swift in Sources */,
+				65E2E4BF28A19E8200BE6426 /* ViewModel.swift in Sources */,
 				65E2E49228A19E1C00BE6426 /* SpineProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,8 +487,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpineProject/Preview Content\"";
 				DEVELOPMENT_TEAM = N23AJLFLW2;
+				ENABLE_BITCODE = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpineProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -447,8 +518,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpineProject/Preview Content\"";
 				DEVELOPMENT_TEAM = N23AJLFLW2;
+				ENABLE_BITCODE = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpineProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -583,6 +656,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		65E2E4C328A19FE200BE6426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+		65E2E4C828A1A03100BE6426 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		65E2E4C428A19FE200BE6426 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65E2E4C328A19FE200BE6426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		65E2E4C628A19FE200BE6426 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65E2E4C328A19FE200BE6426 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		65E2E4C928A1A03100BE6426 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65E2E4C828A1A03100BE6426 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 65E2E48628A19E1C00BE6426 /* Project object */;
 }
