@@ -49,9 +49,11 @@ class ViewModel: ObservableObject {
     
     @Published var searchedByAuthorResults = [SpineBook]()
     
- 
+    
     init() {
+        
         getBooks()
+        
     }
     
     func handleAddToCurrentlyReading(author: String,
@@ -110,12 +112,13 @@ class ViewModel: ObservableObject {
                                "cover" : cover, // check this
                               ]) {error in
             if error != nil {
+                
                 print(error!.localizedDescription)
                 
             }
         }
     }
-
+    
     
     func getBooks () {
         
@@ -127,6 +130,7 @@ class ViewModel: ObservableObject {
                 print(error!.localizedDescription)
                 return
             }
+            
             if let snapshot = snapshot {
                 
                 DispatchQueue.main.async {
@@ -156,6 +160,7 @@ class ViewModel: ObservableObject {
                 print(error.localizedDescription)
                 return
             }
+            
             querySnapshot?.documentChanges.forEach({ change in
                 if change.type == .added {
                     let doc = change.document
@@ -182,15 +187,16 @@ class ViewModel: ObservableObject {
                 print(error.localizedDescription)
                 return
             }
+            
             querySnapshot?.documentChanges.forEach({ change in
                 if change.type == .added {
                     let doc = change.document
                     self.searchedByTitleResults.append(.init(id: doc.documentID,
-                                                       author: doc["author"] as? String ?? "",
-                                                       genre: doc["genre"] as? String ?? "",
-                                                       title: doc["title"] as? String ?? "",
-                                                    cover: doc["cover"] as? String ?? "",
-                                                       blurb: doc["blurb"] as? String ?? ""))
+                                                             author: doc["author"] as? String ?? "",
+                                                             genre: doc["genre"] as? String ?? "",
+                                                             title: doc["title"] as? String ?? "",
+                                                             cover: doc["cover"] as? String ?? "",
+                                                             blurb: doc["blurb"] as? String ?? ""))
                     
                 }
             })
@@ -208,15 +214,16 @@ class ViewModel: ObservableObject {
                 print(error.localizedDescription)
                 return
             }
+            
             querySnapshot?.documentChanges.forEach({ change in
                 if change.type == .added {
                     let doc = change.document
                     self.searchedByAuthorResults.append(.init(id: doc.documentID,
-                                                       author: doc["author"] as? String ?? "",
-                                                       genre: doc["genre"] as? String ?? "",
-                                                       title: doc["title"] as? String ?? "",
+                                                              author: doc["author"] as? String ?? "",
+                                                              genre: doc["genre"] as? String ?? "",
+                                                              title: doc["title"] as? String ?? "",
                                                               cover: doc["cover"] as? String ?? "",
-                                                       blurb: doc["blurb"] as? String ?? ""))
+                                                              blurb: doc["blurb"] as? String ?? ""))
                     
                 }
             })
@@ -234,6 +241,7 @@ class ViewModel: ObservableObject {
                 print(error.localizedDescription)
                 return
             }
+            
             querySnapshot?.documentChanges.forEach({ change in
                 if change.type == .added {
                     let doc = change.document
@@ -278,8 +286,10 @@ class ViewModel: ObservableObject {
                 print("Incorrect info")
                 self.userAccountStatusMessage = "Failed to create user"
             } else {
+                
                 self.isUserLoggedIn = true
                 self.createUserAccount()
+                
             }
         }
     }
@@ -292,7 +302,9 @@ class ViewModel: ObservableObject {
                 print(error!.localizedDescription)
                 self.userAccountStatusMessage = "Incorrect email or password, please try again."
             } else {
+                
                 self.isUserLoggedIn = true
+                
             }
             
         }
@@ -312,7 +324,9 @@ class ViewModel: ObservableObject {
                 return
             }
             else {
+                
                 print("Success")
+                
             }
         }
     }
@@ -345,6 +359,7 @@ class ViewModel: ObservableObject {
         let ref = db.collection("Users").document(uid).collection("CurrentlyReading")
         
         ref.document(bookToRemove.id).delete() { error in
+            
             if error == nil {
                 
                 DispatchQueue.main.async {
@@ -364,7 +379,9 @@ class ViewModel: ObservableObject {
         
         isUserLoggedIn.toggle()
         do {
+            
             try Auth.auth().signOut()
+            
         } catch let signOutError as NSError {
             print("error signing out: %@", signOutError)
         }
