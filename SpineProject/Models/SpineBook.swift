@@ -9,10 +9,12 @@
 import Foundation
 import SwiftUI
 import Firebase
+import FirebaseFirestore
 
-struct SpineBook: Identifiable {
+/// The SpineBooks struct 
+struct SpineBook: Identifiable, Codable {
     
-    // Check capitalisation of variable labels
+
     var id: String
     var author: String
     var genre: String

@@ -14,6 +14,8 @@ struct MainView: View {
     
     @EnvironmentObject var model: ViewModel
     
+    @State var showRegistrationForm = false
+    
     var body: some View {
         
         if model.isUserLoggedIn == false {
@@ -115,12 +117,17 @@ struct MainView: View {
                         
                     }
                     
-                    NavigationLink(destination: Register()) {
+                    Button  {
+                        self.showRegistrationForm.toggle()
+                    } label: {
                         Text("Register for an account here.")
                             .font(.custom("Baskerville", size: 30))
                             .padding(.vertical, -5.0)
                             .foregroundColor(Color("EerieBlack"))
                         
+                    }
+                    .sheet(isPresented: $showRegistrationForm) {
+                        Register()
                     }
                     
                     Spacer()
@@ -165,6 +172,7 @@ struct MainView: View {
         init() {
             
             model.fetchCR()
+            model.getBooks()
             model.fetchTBR()
             
         }
@@ -292,6 +300,7 @@ struct MainView: View {
                                                         
                                                         
                                                         Button {
+                                                            showFilledBlock = true
                                                             showFilledBlock2.toggle()
                                                         } label: {
                                                             
@@ -334,6 +343,8 @@ struct MainView: View {
                                                         
                                                         
                                                         Button {
+                                                            showFilledBlock = true
+                                                            showFilledBlock2 = true
                                                             showFilledBlock3.toggle()
                                                         } label: {
                                                             if showFilledBlock3 == true {
@@ -375,6 +386,9 @@ struct MainView: View {
                                                         
                                                         
                                                         Button {
+                                                            showFilledBlock = true
+                                                            showFilledBlock2 = true
+                                                            showFilledBlock3 = true
                                                             showFilledBlock4.toggle()
                                                         } label: {
                                                             
@@ -506,6 +520,11 @@ struct MainView: View {
                                                         author: book.author, title: book.title,
                                                         genre: book.genre, cover: book.cover,
                                                         blurb: book.blurb, id: book.id)
+                                                    self.showFilledBlock = false
+                                                    self.showFilledBlock2 = false
+                                                    self.showFilledBlock3 = false
+                                                    self.showFilledBlock4 = false
+                                                    
                                                 } label: {
                                                     Image(systemName: "arrow.up.heart.fill")
                                                         .foregroundColor(.white)
@@ -653,7 +672,6 @@ struct MainView: View {
                         Spacer()
                         
                         Button {
-                            showRegisteredAlert = true
                             model.registerUser(email: newEmail, password: newPassword)
                         } label: {
                             Text("Register")
@@ -663,11 +681,7 @@ struct MainView: View {
                                 .font(.custom("KAGE_DEMO_FONT-Black", size: 60))
                                 .padding()
                         }
-                        .alert(isPresented: $showRegisteredAlert) {
-                            Alert (
-                                title: Text("Successfully registered!")
-                            )
-                        }
+
                         
                         Text(model.userAccountStatusMessage)
                             .foregroundColor(.white)
@@ -707,22 +721,13 @@ struct MainView: View {
         
         @State var addedToTBR = false
         
-        init() {
-            
-            UITableView.appearance().separatorStyle = .none
-            
-            UITableViewCell.appearance().backgroundColor = .clear
-            
-            UITableView.appearance().backgroundColor = .clear
-            
-        }
         
         var body: some View {
             
             ZStack {
                 
                 Color("Sage")
-                    .ignoresSafeArea(.all)
+                    .ignoresSafeArea()
                 
                 VStack {
                     
@@ -768,9 +773,10 @@ struct MainView: View {
                         }
                     }
                     
-                    ScrollView {
+                    
                         
                         VStack {
+                            ScrollView {
                             
                             ForEach(model.list) { book in
                                 
@@ -800,12 +806,25 @@ struct MainView: View {
                                                         blurb: book.blurb, id: book.id)
                                                     
                                                 }, label: {
+                                                    ZStack{
+                                                        
+                                                        Image(systemName: "capsule.fill")
+                                                            .foregroundColor(.white)
+                                                            .font(.system(size: 30))
+                                                            .padding(.horizontal, 10.0)
+                                                        HStack{
+                                                            
                                                     Image(systemName: "plus")
-                                                        .foregroundColor(Color("ArmyGreen"))
-                                                    Text("Currently Reading")
-                                                        .foregroundColor(Color("ArmyGreen"))
+                                                        .foregroundColor(Color("Sage"))
+                                                        .font(.system(size: 10))
+                                                        .padding(.horizontal, -11.0)
+                                                    Text("CR")
+                                                        .foregroundColor(Color("Sage"))
+                                                        .padding(.horizontal, -10.0)
                                                         .font(.custom("Baskerville", size: 15))
-                                                        .underline()
+                                                    }
+                                                        
+                                                }
                                                 })
                                                 .frame(maxWidth: .infinity, alignment: .leading)
                                                 .buttonStyle(BorderlessButtonStyle())
@@ -815,6 +834,7 @@ struct MainView: View {
                                                     )
                                                 }
                                                 
+                                                
                                                 Button (action: {
                                                     addedToTBR = true
                                                     model.handleAddToToBeRead(
@@ -823,14 +843,28 @@ struct MainView: View {
                                                         blurb: book.blurb, id: book.id)
                                                     
                                                 }, label: {
+                                                    ZStack{
+                                                        
+                                                        Image(systemName: "suit.heart.fill")
+                                                            .foregroundColor(.white)
+                                                            .font(.system(size: 35))
+                                                            .padding(.horizontal, 30.0)
+                                                        HStack{
+                                                            
                                                     Image(systemName: "plus")
-                                                        .foregroundColor(Color("ArmyGreen"))
-                                                    Text("To be read")
-                                                        .foregroundColor(Color("ArmyGreen"))
-                                                        .font(.custom("Baskerville", size: 15))
-                                                        .underline()
+                                                        .foregroundColor(Color("Sage"))
+                                                        .font(.system(size: 10))
+                                                        .padding(.horizontal, -11.0)
+                                                    Text("TBR")
+                                                        .foregroundColor(Color("Sage"))
+                                                        .padding(.horizontal, -10.0)
+                                                        .font(.custom("Baskerville", size: 10))
+                                                    }
+                                                        
+                                                }
+    
                                                 })
-                                                .frame(maxWidth: .infinity, alignment: .leading)
+                                                .offset(x: -180.0, y: 0)
                                                 .buttonStyle(BorderlessButtonStyle())
                                                 .alert(isPresented: $addedToTBR) {
                                                     Alert (
@@ -838,9 +872,13 @@ struct MainView: View {
                                                     )
                                                 }
                                                 
+                                                Spacer()
+                                                
                                                 
                                             }
                                         }
+                                        
+                                        Spacer()
                                         
                                         WebImage(url: URL(string: book.cover))
                                             .resizable()
@@ -850,7 +888,9 @@ struct MainView: View {
                                         
                                     }
                                     
-                                    
+                                    Rectangle()
+                                        .frame(width: 400, height: 1)
+                                        .foregroundColor((Color("ArmyGreen")))
                                     
                                 }
                                 
@@ -917,13 +957,13 @@ struct MainView: View {
                     
                     Button {
                         bookAddedAlert = true
-                        model.newTitle = ""
-                        model.newCover = ""
-                        model.newCover = ""
-                        model.newGenre = ""
                         model.addBook(author: model.newAuthor, title: model.newTitle,
                                       genre: model.newGenre, cover: model.newCover,
                                       blurb: model.newBlurb)
+                        model.newTitle = ""
+                        model.newAuthor = ""
+                        model.newCover = ""
+                        model.newGenre = ""
                     } label: {
                         Text("Add book")
                             .underline()
@@ -965,6 +1005,8 @@ struct MainView: View {
                     .ignoresSafeArea()
                 
                 VStack {
+                    
+                    ScrollView {
                     
                     Spacer()
                     
@@ -1026,12 +1068,26 @@ struct MainView: View {
                                                     blurb: book.blurb, id: book.id)
                                                 
                                             }, label: {
+                                                
+                                                ZStack{
+                                                    
+                                                    Image(systemName: "capsule.fill")
+                                                        .foregroundColor(.white)
+                                                        .font(.system(size: 30))
+                                                        .padding(.horizontal, 10.0)
+                                                    HStack{
+                                                        
                                                 Image(systemName: "plus")
-                                                    .foregroundColor(Color("ArmyGreen"))
-                                                Text("Currently Reading")
-                                                    .foregroundColor(Color("ArmyGreen"))
+                                                    .foregroundColor(Color("Sage"))
+                                                    .font(.system(size: 10))
+                                                    .padding(.horizontal, -11.0)
+                                                Text("CR")
+                                                    .foregroundColor(Color("Sage"))
+                                                    .padding(.horizontal, -10.0)
                                                     .font(.custom("Baskerville", size: 15))
-                                                    .underline()
+                                                }
+                                                    
+                                            }
                                             })
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                             .buttonStyle(BorderlessButtonStyle())
@@ -1049,12 +1105,25 @@ struct MainView: View {
                                                     blurb: book.blurb, id: book.id)
                                                 
                                             }, label: {
+                                                ZStack{
+                                                    
+                                                    Image(systemName: "capsule.fill")
+                                                        .foregroundColor(.white)
+                                                        .font(.system(size: 30))
+                                                        .padding(.horizontal, 10.0)
+                                                    HStack{
+                                                        
                                                 Image(systemName: "plus")
-                                                    .foregroundColor(Color("ArmyGreen"))
-                                                Text("To be read")
-                                                    .foregroundColor(Color("ArmyGreen"))
+                                                    .foregroundColor(Color("Sage"))
+                                                    .font(.system(size: 10))
+                                                    .padding(.horizontal, -11.0)
+                                                Text("TBR")
+                                                    .foregroundColor(Color("Sage"))
+                                                    .padding(.horizontal, -10.0)
                                                     .font(.custom("Baskerville", size: 15))
-                                                    .underline()
+                                                }
+                                                    
+                                            }
                                             })
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                             .buttonStyle(BorderlessButtonStyle())
@@ -1155,12 +1224,25 @@ struct MainView: View {
                                                     blurb: book.blurb, id: book.id)
                                                 
                                             }, label: {
+                                                ZStack{
+                                                    
+                                                    Image(systemName: "capsule.fill")
+                                                        .foregroundColor(.white)
+                                                        .font(.system(size: 30))
+                                                        .padding(.horizontal, 10.0)
+                                                    HStack{
+                                                        
                                                 Image(systemName: "plus")
-                                                    .foregroundColor(Color("ArmyGreen"))
-                                                Text("Currently Reading")
-                                                    .foregroundColor(Color("ArmyGreen"))
+                                                    .foregroundColor(Color("Sage"))
+                                                    .font(.system(size: 10))
+                                                    .padding(.horizontal, -11.0)
+                                                Text("CR")
+                                                    .foregroundColor(Color("Sage"))
+                                                    .padding(.horizontal, -10.0)
                                                     .font(.custom("Baskerville", size: 15))
-                                                    .underline()
+                                                }
+                                                    
+                                            }
                                             })
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                             .buttonStyle(BorderlessButtonStyle())
@@ -1170,6 +1252,8 @@ struct MainView: View {
                                                 )
                                             }
                                             
+                                            Divider()
+                                            
                                             Button (action: {
                                                 addedToTBR = true
                                                 model.handleAddToToBeRead(
@@ -1178,12 +1262,25 @@ struct MainView: View {
                                                     blurb: book.blurb, id: book.id)
                                                 
                                             }, label: {
+                                                ZStack{
+                                                    
+                                                    Image(systemName: "capsule.fill")
+                                                        .foregroundColor(.white)
+                                                        .font(.system(size: 30))
+                                                        .padding(.horizontal, 10.0)
+                                                    HStack{
+                                                        
                                                 Image(systemName: "plus")
-                                                    .foregroundColor(Color("ArmyGreen"))
-                                                Text("To be read")
-                                                    .foregroundColor(Color("ArmyGreen"))
+                                                    .foregroundColor(Color("Sage"))
+                                                    .font(.system(size: 10))
+                                                    .padding(.horizontal, -11.0)
+                                                Text("TBR")
+                                                    .foregroundColor(Color("Sage"))
+                                                    .padding(.horizontal, -10.0)
                                                     .font(.custom("Baskerville", size: 15))
-                                                    .underline()
+                                                }
+                                                    
+                                            }
                                             })
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                             .buttonStyle(BorderlessButtonStyle())
@@ -1192,7 +1289,8 @@ struct MainView: View {
                                                     title: Text("Successfully add to your To Be Read!")
                                                 )
                                             }
-                                            
+                                           
+                                            Spacer()
                                             
                                         }
                                     }
@@ -1220,6 +1318,7 @@ struct MainView: View {
                         
                     }
                 }
+                }
                 .padding()
             }
         }
@@ -1236,6 +1335,7 @@ struct MainView: View {
                 Color("Sage")
                     .ignoresSafeArea(.all)
                 
+                ScrollView {
                 VStack {
                     
                     Spacer()
@@ -1265,7 +1365,7 @@ struct MainView: View {
 
                     Button {
                         
-                        //model.deleteAccount()
+                        model.deleteAccount()
                         
                     } label: {
                         Text("Delete your account")
@@ -1274,8 +1374,10 @@ struct MainView: View {
                             .foregroundColor(Color("EerieBlack"))
                     }
                     
-                    Spacer()
+ 
+
                 }
+            }
                 
             }
             
