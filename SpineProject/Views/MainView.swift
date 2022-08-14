@@ -440,7 +440,11 @@ struct MainView: View {
                                                 Button {
                                                     model.removeFromCR(bookToRemove:
                                                                         model.currentlyReading[0])
-                                                    showRemovedAlert = true
+                                                    self.showFilledBlock = false
+                                                    self.showFilledBlock2 = false
+                                                    self.showFilledBlock3 = false
+                                                    self.showFilledBlock4 = false
+                                                    showFinishedAlert = true
                                                 } label: {
                                                     Text("Finished")
                                                         .underline()
