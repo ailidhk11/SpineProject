@@ -105,6 +105,13 @@ struct MainView: View {
                         .frame(width:165, height:1)
                         .foregroundColor(.white)
                     
+                    Text(model.userAccountStatusMessage)
+                        .frame(width:165, height:20)
+                        .font(.custom("Baskerville", size: 20))
+                        .padding(.vertical, -5.0)
+                        .foregroundColor(.red)
+                        .autocapitalization(.none)
+                    
                     Button {
                         model.login(email: model.email, password: model.password)
                     } label: {
@@ -838,6 +845,7 @@ struct MainView: View {
                                                     )
                                                 }
                                                 
+                                                Spacer()
                                                 
                                                 Button (action: {
                                                     addedToTBR = true
@@ -868,7 +876,7 @@ struct MainView: View {
                                                 }
     
                                                 })
-                                                .offset(x: -180.0, y: 0)
+                                                .offset(x: -170.0, y: 0)
                                                 .buttonStyle(BorderlessButtonStyle())
                                                 .alert(isPresented: $addedToTBR) {
                                                     Alert (

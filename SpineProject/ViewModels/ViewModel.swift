@@ -379,7 +379,7 @@ class ViewModel: ObservableObject {
             if error != nil {
                 self.isUserLoggedIn = false
                 print(error!.localizedDescription)
-                self.userAccountStatusMessage = "Incorrect email or password, please try again."
+                self.userAccountStatusMessage = "Incorrect details."
             } else {
                 
                 self.isUserLoggedIn = true
